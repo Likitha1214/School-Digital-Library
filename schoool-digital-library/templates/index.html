@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>School Digital Library</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📚 School Digital Library AI Assistant</h1>
+
+<p>Search any topic from your school textbooks.</p>
+
+<form action="/upload" method="POST" enctype="multipart/form-data">
+
+<label>Subject</label>
+
+<select name="subject">
+
+<option>Mathematics</option>
+
+<option>Science</option>
+
+<option>English</option>
+
+<option>Social</option>
+
+<option>Computer</option>
+
+</select>
+
+<label>Chapter</label>
+
+<input type="text" name="chapter" placeholder="Enter Chapter Name">
+
+<label>Upload Book (PDF)</label>
+
+<input type="file" name="pdf">
+
+<button type="submit">Upload Book</button>
+
+</form>
+
+<hr>
+
+<h2>Ask AI</h2>
+
+<form action="/search" method="POST">
+
+<input
+type="text"
+name="question"
+placeholder="Ask any question from your book..."
+required>
+
+<button type="submit">Search</button>
+
+</form>
+
+{% if answer %}
+
+<div class="answer">
+
+<h3>Answer</h3>
+
+<p>{{answer}}</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

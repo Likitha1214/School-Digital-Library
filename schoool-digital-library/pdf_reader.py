@@ -1,0 +1,14 @@
+import PyPDF2
+
+def read_pdf(file_path):
+    text = ""
+
+    with open(file_path, "rb") as pdf:
+        reader = PyPDF2.PdfReader(pdf)
+
+        for page in reader.pages:
+            page_text = page.extract_text()
+            if page_text:
+                text += page_text
+
+    return text
